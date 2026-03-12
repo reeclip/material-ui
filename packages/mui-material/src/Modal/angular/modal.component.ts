@@ -7,18 +7,15 @@ import {
   ViewChild,
   OnChanges,
   OnDestroy,
-  OnInit,
   AfterViewInit,
   SimpleChanges,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Renderer2,
   Inject,
-  TemplateRef,
-  ViewContainerRef,
   NgZone,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { ModalManagerService, ariaHidden } from './modal-manager.service';
 
 export type ModalCloseReason = 'backdropClick' | 'escapeKeyDown';
@@ -45,6 +42,8 @@ export type ModalCloseReason = 'backdropClick' | 'escapeKeyDown';
  */
 @Component({
   selector: 'mui-modal',
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <ng-container *ngIf="shouldRender">
       <div
